@@ -1,0 +1,70 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Eda", "eda@gmail.com", "123-456-7890", "25", "ACS");
+        p1.print();
+        Person p2 = new Person("Hannah", "hannah@gmail.com", "404-899-9955", "32", "NBU");
+        p2.print();
+        Person p3 = new Person("Dimitar", "miteto@gmail.com", "321-123-4132", "52", "TenisClub");
+        p3.print();
+
+      p3.updateEmail();
+      p3.print();
+    }
+}
+
+// Define the Person class here
+class Person {
+    // Instance variables
+    private String name;
+    private String email;
+    private String phoneNumber;
+    private String age;
+    private String company;
+
+    // Constructor: Initialize Person data
+    public Person(String name, String email, String phoneNumber, String age, String company) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.company = company;
+        name = "Enter name";
+        email = "Enter email";
+        phoneNumber = "Enter phone number";
+        age = "Enter age";
+        company = "Enter company";
+    }
+
+    public void print() {
+        System.out.println("Name: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Phone Number: " + phoneNumber);
+        System.out.println("Age: " + age);
+        System.out.println("Company: " + company);
+
+    }
+
+    public String getName() {
+        return name;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }public String getAge() {
+        return age;
+    }
+    public String getCompany() {
+        return company;
+    }
+
+
+
+    public void updateEmail() {
+        Scanner cherg = new Scanner(System.in);
+        System.out.print ("Enter new email here: ");
+        email = cherg.next();
+    }
+}
