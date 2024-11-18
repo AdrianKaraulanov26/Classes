@@ -1,0 +1,28 @@
+public class Main {
+    public static void main(String[] args) {
+        Book book1 = new Book("Project Hail Mary", "Andy Weir", 496);
+        book1.print();
+        Book book2 = new Book("The Subtle Art of Not Giving a F*ck", "Mark Manson", 212);
+        book2.print();
+    }
+}
+
+// Define the Book class
+class Book {
+    public String title;
+    public String author;
+    public int numberOfPages;
+
+    public Book(String title, String author, int numberOfPages) {
+        this.title = title;
+        this.author = author;
+        this.numberOfPages = numberOfPages;
+
+    }
+    public void print(){
+        System.out.println("Title: " + title);
+        System.out.println("Author: " + author);
+        System.out.println("Number of pages: " + numberOfPages);
+
+    }
+}
