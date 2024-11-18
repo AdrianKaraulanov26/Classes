@@ -29,11 +29,6 @@ class Person {
         this.phoneNumber = phoneNumber;
         this.age = age;
         this.company = company;
-        name = "Enter name";
-        email = "Enter email";
-        phoneNumber = "Enter phone number";
-        age = "Enter age";
-        company = "Enter company";
     }
 
     public void print() {
