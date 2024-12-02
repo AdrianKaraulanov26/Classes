@@ -1,0 +1,119 @@
+public class Main {
+
+    public static void main(String[] args){
+        Wizard wizard = new Wizard("Merlin",100, 10,5);
+        Warrior warrior = new Warrior("Ragnar",100,7,10);
+        Golem golem = new Golem("Rocky", 200, 15, 5);
+        System.out.println(wizard.getName() + "'s health: " + wizard.getHealth());
+        System.out.println(warrior.getName()+"'s health: " + warrior.getHealth());
+        System.out.println(golem.getName()+"'s health: " + golem.getHealth());
+        System.out.println("Game is starting...");
+        wizard.wariorAttack(warrior);
+        System.out.println( warrior.getName()+" attacks " + wizard.getName() + ". Health updated: " + wizard.getHealth());
+        golem.wizardAttack(wizard);
+        System.out.println( wizard.getName()+" attacks " + golem.getName() + ". Health updated: " + golem.getHealth());
+        warrior.wizardAttack(wizard);
+        System.out.println( wizard.getName()+" attacks " + warrior.getName() + ". Health updated: " + warrior.getHealth());
+        warrior.golemAttack(golem);
+        System.out.println( golem.getName()+" attacks " +warrior.getName() + ". Health updated: " + warrior.getHealth());
+        wizard.golemAttack(golem);
+        System.out.println( golem.getName()+" attacks " + wizard.getName() + ". Health updated: " + wizard.getHealth());
+    }
+}
+
+
+class Wizard {
+    private String name;
+    private int health;
+    private int darkMagic;
+    private int wizardArmor;
+
+    public Wizard(String name, int health, int darkMagic, int wizardArmor){
+        this.name = name;
+        this.health = health;
+        this.darkMagic = darkMagic;
+        this.wizardArmor = wizardArmor;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getDarkMagic(){
+        return darkMagic;
+    }
+
+    public void wariorAttack(Warrior attack) {
+       health = health - (attack.getSword() - wizardArmor);
+    }
+    public void golemAttack(Golem attack) {
+       health = health - (attack.getAttack() - wizardArmor);
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+}
+
+class Warrior {
+    private String name;
+    private int health;
+    private int sword;
+    private int metalArmor;
+
+    public Warrior(String name, int health, int sword, int metalArmor){
+        this.name = name;
+        this.health = health;
+        this.sword = sword;
+        this.metalArmor = metalArmor;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSword() {
+        return sword;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void wizardAttack(Wizard attack) {
+       health = health - (attack.getDarkMagic() - metalArmor);
+    }
+    public void golemAttack(Golem attack) {
+       health = health - (attack.getAttack() - metalArmor);
+    }
+
+}
+
+class Golem{
+    private String Name;
+    private int health;
+    private int fist;
+    private int stoneArmor;
+    public Golem(String Name, int health, int fist, int stoneArmor){
+        this.Name = Name;
+        this.health = health;
+        this.fist = fist;
+        this.stoneArmor = stoneArmor;
+    }
+    public String getName(){
+        return Name;
+    }
+    public int getAttack(){
+        return fist;
+    }
+    public int getHealth(){
+        return health;
+    }
+    public void wizardAttack(Wizard attack){
+        health = health - (attack.getDarkMagic() - stoneArmor);
+    }
+    public void warriorAttack(Warrior attack){
+        health = health - (attack.getSword() - stoneArmor);
+    }
+}
