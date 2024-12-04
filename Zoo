@@ -1,0 +1,104 @@
+public class Main {
+    public static void main(String[] args) {
+    Habitat savannah = new Habitat("Savannah", 150, 22);
+    Habitat forest = new Habitat("Forest", 250, 17);
+    Habitat desert = new Habitat("Desert", 350, 26);
+    Habitat jungle = new Habitat("Jungle", 200, 21);
+
+    Zoo vienna =  new Zoo("Vienna");
+    vienna.printZoo(savannah, forest);
+    vienna.addAnimal1("Mecho", "bear", 30, forest);
+    vienna.addAnimal2("Swift", "antelope", 7, savannah);
+    vienna.addAnimal3("Hoofe", "boar", 18, forest);
+    vienna.addAnimal4("Cheetos", "cheetah", 13, savannah);
+
+    Staff goshko = new Staff("Georgi", "veterinarian", savannah);
+    Staff pesho = new Staff("Peter", "keeper", forest);
+    goshko.assignStaff(forest);
+    pesho.assignStaff(savannah);
+
+    Zoo Sofia = new Zoo("Sofia");
+    Sofia.printZoo(desert, jungle);
+    Sofia.addAnimal1("Hobotcho", "Elephant", 43, desert);
+    Sofia.addAnimal2("Luvco", "Lion", 13, desert);
+    Sofia.addAnimal3("Maimun", "Monkey", 9, jungle);
+    Sofia.addAnimal4("Zmiika", "Snake", 22, jungle);
+    Staff ivan = new Staff("Ivan", "Vet", desert);
+    Staff mimi = new Staff("Maria", "Keeper", jungle);
+    ivan.assignStaff(desert);
+    mimi.assignStaff(jungle);
+    }
+}
+class Animal{
+    private String name;
+    private String species;
+    private int age;
+    private Habitat habitat;
+
+    public Animal(String name, String species, int age, Habitat habitat){
+        this.name = name;
+        this.species = species;
+        this.age = age;
+        this.habitat = habitat;
+    }
+}
+class Habitat{
+    private String type;
+    private int size;
+    private int temperature;
+    public Habitat(String type, int size, int temperature){
+        this.type = type;
+        this.size = size;
+        this.temperature = temperature;
+    }
+
+    public String getType() {
+        return type;
+    }
+}
+class Zoo{
+    private Animal a1;
+    private Animal a2;
+    private Animal a3;
+    private Animal a4;
+    private String name;
+    public Zoo(String name){
+        this.name = name;
+    }
+     void addAnimal1(String name, String species, int age, Habitat habitat){
+       a1 = new Animal(name, species, age, habitat);
+       System.out.println("The first Animal is named " + name + ", they are a " + species + ", they are " + age + " years old and live in the " + habitat.getType());
+    }
+    void addAnimal2(String name, String species, int age, Habitat habitat){
+       a2 = new Animal(name, species, age, habitat);
+       System.out.println("The second Animal is named " + name + ", they are a " + species + ", they are " + age + " years old and live in the " + habitat.getType());
+
+    }
+    void addAnimal3(String name, String species, int age, Habitat habitat){
+       a3 = new Animal(name, species, age, habitat);
+       System.out.println("The third Animal is named " + name + ", they are a " + species + ", they are " + age + " years old and live in the " + habitat.getType());
+
+    }
+    void addAnimal4(String name, String species, int age, Habitat habitat){
+       a4 = new Animal(name, species, age, habitat);
+       System.out.println("The fourth Animal is named " + name + ", they are a " + species + ", they are " + age + " years old and live in the " + habitat.getType());
+
+    }
+    void printZoo(Habitat h1, Habitat h2){
+         System.out.println("The " + name + " Zoo has 4 animals and 2 habitats, the habitats are: " + h1.getType() + " and "+ h2.getType());
+    }
+}
+class Staff{
+    private String name;
+    private String role;
+    private Habitat assignedHabitat;
+    public Staff(String name, String role, Habitat assignedHabitat){
+        this.name = name;
+        this.role = role;
+        this.assignedHabitat = assignedHabitat;
+    }
+    void assignStaff(Habitat habitat){
+        assignedHabitat = habitat;
+        System.out.println(name + " is a " + role + " and is assigned to " + assignedHabitat.getType());
+    }
+}
