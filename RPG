@@ -1,0 +1,63 @@
+public class Main {
+    public static void main(String[] args) {
+        Wizard Mage = new Wizard(100, "Mage", 25, 5, "Fireball", 15, 3);
+        Ogre Shreck = new Ogre(200,"Shreck",15,15,"Boulder", 5);
+        Knight Strongman = new Knight(100,"Eddie",20,20,"Charge", 1);
+    }
+}
+class Character{
+    private int Health;
+    private String Name;
+    private int attack;
+    private int armor;
+    private String special;
+    public Character(int Health, String Name,  int attack, int armor, String special){
+        this.Health = Health;
+        this.Name = Name;
+        this.attack = attack;
+        this.armor = armor;
+        this.special = special;
+    }
+    int getHealth(){
+        return Health;
+    }
+    String getName(){
+        return Name;
+    }
+    int getAttack(){
+        return attack;
+    }
+    int getArmor(){
+        return armor;
+    }
+    String getSpecial(){
+        return special;
+    }
+    int attack(Character a, Character b){
+        a.Health -= b.attack;
+        return Health;
+    }
+}
+class Wizard extends Character{
+    private int healing;
+    private int fireball;
+    public Wizard(int Health, String Name, int attack, int armor, String special, int healing, int fireball) {
+        super(Health, Name, attack, armor, special);
+        this.healing = healing;
+        this.fireball = fireball;
+    }
+}
+class Ogre extends Character{
+    private int boulders;
+    public Ogre(int Health, String Name, int attack, int armor, String special, int boulders) {
+        super(Health, Name, attack, armor, special);
+        this.boulders = boulders;
+    }
+}
+class Knight extends Character{
+    private int charge;
+    public Knight(int Health, String Name, int attack, int armor, String special, int charge) {
+        super(Health, Name, attack, armor, special);
+        this.charge = charge;
+    }
+}
