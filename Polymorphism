@@ -1,0 +1,103 @@
+public class Main {
+    public static void main(String[] args) {
+        Animal[] anis = {
+                new Chicken(1,"Steve's lava chicken",2,"male"),
+                new Chicken(2,"Kung fu chicken",3,"female"),
+                new Cow(3,"Patty",4,"female"),
+                new Cow(4,"Hulk",6,"male"),
+                new Sheep(5,"YARN",7,"female"),
+                new Sheep(6,"Daquivius Dolores III",2,"male"),
+        };
+        for(Animal animal: anis){
+            System.out.println(animal.makeSound());
+            System.out.println(animal.name + " produces " + animal.getProduct());
+            System.out.println();
+        }
+    }
+}
+class Animal{
+    int id;
+    String name;
+    int age;
+    String gender;
+
+    public Animal(int id,String name,int age,String gender){
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+    public String getName(){
+        return name;
+    }
+    public String makeSound(){
+        return "";
+    }
+    public String getProduct(){
+        return "";
+    }
+}
+class Chicken extends Animal{
+    public Chicken(int id, String name, int age, String gender){
+        super(id,name,age,gender);
+    }
+
+    @Override
+    public String makeSound() {
+        return "Chick Chick";
+    }
+
+    @Override
+    public String getProduct() {
+        if(gender == "female"){
+            return "eggs and meat";
+        }else if(gender == "male"){
+            return "only meat";
+        }else{
+            return null;
+        }
+    }
+}
+class Cow extends Animal{
+    public Cow(int id, String name, int age, String gender){
+        super(id,name,age,gender);
+    }
+
+    @Override
+    public String makeSound() {
+        return "MOOOOOOOOOOOOOO";
+    }
+
+    @Override
+    public String getProduct() {
+        if(gender == "female"){
+            return "milk and meat";
+        }else if(gender == "male"){
+            return "only meat";
+        }else{
+            return null;
+        }
+    }
+}
+class Sheep extends Animal{
+    public Sheep(int id, String name, int age, String gender){
+        super(id,name,age,gender);
+    }
+
+    @Override
+    public String makeSound() {
+        return "MEEEEEEEEEEEEEEEE";
+    }
+
+    @Override
+    public String getProduct() {
+        if(gender == "female"){
+            return "wool, milk and meat";
+        }else if(gender == "male"){
+            return "wool and meat";
+        }else{
+            return null;
+        }
+    }
+}
+//predicted output: Sound of the animal, new line produce line, empty line, repeated 6 times, once per animal
