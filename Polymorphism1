@@ -1,0 +1,80 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Arthropod> biosystem1= new ArrayList<Arthropod>();
+        biosystem1.add( new Arachnid(5,"Black Widow","4"));
+        biosystem1.add( new Insect(1,"Black Ant","4"));
+        biosystem1.add( new Arachnid(3,"Black Scorpion","4"));
+        biosystem1.add( new Insect(2,"Bee","10"));
+        biosystem1.add( new Arachnid(6,"Whip scorpion","4"));
+        biosystem1.add( new Insect(7,"Butterfly","10"));
+        System.out.println();
+        System.out.println("---------------------------------////--------------------------------------");
+        System.out.println("Hello everyone, now we are going to hear the choir of the insects, please don't get bored");
+        System.out.println("I know it is really boring and childish, but my brain is fried and it meets the criteria");
+        System.out.println("---------------------------------////--------------------------------------");
+        System.out.println();
+        for(Arthropod a: biosystem1){
+            a.info();
+        }
+    }
+}
+class Arthropod {
+    int legs;
+    int size;
+    String name;
+    String cuteness;
+    public Arthropod(int legs,int size,String name,String cuteness){
+        this.legs = legs;
+        this.size = size;
+        this.name = name;
+        this.cuteness = cuteness;
+    }
+    public String Human_reaction(){
+        return "";
+    }
+
+    public String classification(){
+        if(legs == 6){
+            return "insect";
+        } else{
+            return "arachnid";
+        }
+    }
+    public String song(){
+        return "";
+    }
+    public void info(){
+        System.out.println("Hi, my name is: " + name + " !");
+        System.out.println("If you didn't know I am an " + this.classification() + " because I have " + legs + " legs.");
+        System.out.println("If I were to be ranked on a scale from 1-10 in terms of size, I would be a " + size + "/10 ;)!");
+        System.out.println("When humans see me they say '" + this.Human_reaction() + "', this is always amazing to hear!");
+        System.out.println("The song I like to listen to every time I meet a human is:");
+        System.out.println(this.song());
+        System.out.println();
+    }
+}
+class Insect extends Arthropod{
+    public Insect(int size, String name,String cuteness) {
+        super(6,size,name,cuteness);
+    }
+    public String Human_reaction(){
+        return "Oh look, what a cure insect";
+    }
+    public String song(){
+        return "Oh you cute little " + this.name + ", who would want to harm you, you are such a cutsy little tini tiny thing!";
+    }
+}
+
+class Arachnid extends Arthropod{
+    public Arachnid(int size, String name,String cuteness) {
+        super(8,size,name,cuteness);
+    }
+    public String Human_reaction(){
+        return "OH HEAVENS AND ARACHNID";
+    }
+    public String song(){
+        return "OH "+ this.name + ", AN ANIMAL FROM HELL, PLEASE DON'T MURDER ME, I WOULD EVACUATE MY HOME BECAUSE OF YOU!";
+    }
+}
