@@ -14,7 +14,7 @@ public class Main{
 
     }
     public static void fileWriter(String fileName, String message){
-        String path = "/home/akaraulanov26/Desktop/" + fileName + ".txt";
+        String path = "/home/akaraulanov26/GitHub/" + fileName + ".txt";
         try(FileWriter fw = new FileWriter(path, true)){
             fw.write(message);
             System.out.println("write successful");
