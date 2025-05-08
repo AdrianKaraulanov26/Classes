@@ -1,0 +1,73 @@
+import java.io.*;
+import java.util.*;
+public class Main {
+    static double answer = 0;
+    static double arithmetic_1 = Math.floor(Math.random()*100 + 10);
+    static double arithmetic_2 = Math.floor(Math.random()*10 + 1);
+    static double arithmetic_3 = Math.floor(Math.random()*4);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        String path = "/home/akaraulanov26/GitHub/answers.txt";
+        for(int i = 0; i<5; i++){
+            switch((int) arithmetic_3){
+                case 1 -> {
+                    System.out.println(arithmetic_1 + " + " + arithmetic_2 + " = :" );
+                    resetVars(scanner);
+                    writeToText(path , String.valueOf(answer));
+                    if(answer == (arithmetic_1 + arithmetic_2)){
+                        writeToText(path, "true" + "\n");
+                    }else{
+                        writeToText(path, "false" + "\n");
+                    }
+                }
+                case 2 -> {
+                    System.out.println(arithmetic_1 + " - " + arithmetic_2 + " = :" );
+                    resetVars(scanner);
+                    writeToText(path, String.valueOf(answer));
+                    if(answer == (arithmetic_1 - arithmetic_2)){
+                        writeToText(path, "true" + "\n");
+                    }else{
+                        writeToText(path, "false" + "\n");
+                    }
+                }
+                case 3 -> {
+                    System.out.println(arithmetic_1 + " * " + arithmetic_2 + " = :" );
+                    resetVars(scanner);
+                    writeToText(path, String.valueOf(answer));
+                    if(answer == (arithmetic_1 * arithmetic_2)){
+                        writeToText(path, "true" + "\n");
+                    }else{
+                        writeToText(path, "false" + "\n");
+                    }
+                }
+                case 4 -> {
+                    System.out.println(arithmetic_1 + " / " + arithmetic_2 + " = :" );
+                    resetVars(scanner);
+                    writeToText(path, String.valueOf(answer));
+                    if(answer == (arithmetic_1 / arithmetic_2)){
+                        writeToText(path, "true" + "\n");
+                    }else{
+                        writeToText(path, "false" + "\n");
+                    }
+                }
+            }
+
+        }
+    }
+    public static void writeToText(String path, String answer) {
+        try (FileWriter fw = new FileWriter(path, true)) {
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(answer);
+        } catch (IOException e) {
+            System.out.println("Eror: " + e.getMessage());
+        }
+    }
+    public static void resetVars (Scanner scanner){
+         answer = scanner.nextDouble();
+         arithmetic_1 = Math.floor(Math.random()*100 + 10);
+         arithmetic_2 = Math.floor(Math.random()*10 + 1);
+         arithmetic_3 = Math.floor(Math.random()*4);
+    }
+}
