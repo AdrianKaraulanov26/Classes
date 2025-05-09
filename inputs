@@ -11,7 +11,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String path = "/home/akaraulanov26/GitHub/answers.txt";
 
-        // Initialize random values for each question
         arithmetic_1 = Math.floor(Math.random() * 100 + 10);
         arithmetic_2 = Math.floor(Math.random() * 10 + 1);
         arithmetic_3 = Math.floor(Math.random() * 4 + 1);
