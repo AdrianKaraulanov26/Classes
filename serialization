@@ -1,0 +1,44 @@
+import java.io.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Employee jeff = new Employee(634,"Jeff",10000.00);
+        Employee john = new Employee(123,"John",7654.34);
+        Employee jane = new Employee(654,"Jane",987654.23);
+        Employee[] employees = {jeff, john, jane};
+        for(Employee employee : employees){
+            employee.writeEmployee("/home/akaraulanov26/GitHub/serialization1.txt");
+            employee.readEmployee("/home/akaraulanov26/GitHub/serialization1.txt");
+        }
+
+    }
+}
+class Employee implements Serializable {
+    int id;
+    String name;
+    double salary;
+    Employee(int id, String name, double salary) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+    }
+    public void writeEmployee(String path) {
+        try(ObjectOutputStream write = new ObjectOutputStream(new FileOutputStream(path))){
+            write.writeObject(this);
+        } catch (IOException e) {
+         System.out.println("File not found");
+        }
+    }
+    public void readEmployee(String path) {
+        try(ObjectInputStream readObj = new ObjectInputStream(new FileInputStream(path))){
+            try{
+                while(true) {
+                    Employee employee = (Employee) readObj.readObject();
+                    System.out.println("name = " + employee.name + " id = " + employee.id + " salary = " + employee.salary);
+                }
+            }catch (EOFException | ClassNotFoundException e){}
+        }catch (Exception e){
+            System.out.println("File not found");
+        }
+    }
+}
